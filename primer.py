@@ -11,9 +11,23 @@ salir = True
 volume = 1
 reset = True
 for names in data:
-    print(names["name"])
+    print(names["volumen"])
 
-cancion=str(input("Selecciona la caccion: "))
+category=str(input("Selecciona la categoria: "))
+for names in data:
+    if(names["volumen"]==category):
+        for songs in names["songs"]:
+            print(songs["name"])
+        name=str(input("Selecciona la caccion: "))
+        for songs in names["songs"]:
+            if(songs["name"] == name):
+                cancion = songs["url"]
+        
+        break
+    
+    
+
+
 
 
 mixer.music.load(cancion)
