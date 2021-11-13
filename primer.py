@@ -1,10 +1,21 @@
 from pygame import mixer
 import keyboard
+import os 
+import json
+dir_path = os.path.dirname(os.path.realpath(__file__))
+with open(dir_path+'/data.json') as f:
+  data = json.load(f)
+
 mixer.init()
 salir = True
 volume = 1
 reset = True
+for names in data:
+    print(names["name"])
+
 cancion=str(input("Selecciona la caccion: "))
+
+
 mixer.music.load(cancion)
 mixer.music.set_volume(volume)
 mixer.music.play()
