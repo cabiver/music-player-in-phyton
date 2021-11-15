@@ -26,8 +26,12 @@
             {
                 "name": "true damage",
                 "url": "./league of legend/true damage.mp3"
+            },
+            {
+                "name": "get jinxed",
+                "url": "./league of legend/get jinxed.mp3"
             }
         ]
     }
-    
+
 ]

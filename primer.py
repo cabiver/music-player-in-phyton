@@ -12,20 +12,22 @@ mixer.init()
 salir = True
 volume = 0.3
 reset = True
-comants = True
+comants = False
 can_chance_z = True
 
 def getSong ():       
     print("") 
     for names in data:
         print(names["volumen"])
+    print("")
     category=str(input("Selecciona la categoria:  "))
+    
     for names in data:
         if(names["volumen"]==category):
             for songs in names["songs"]:
                 print(songs["name"])
             name=str(input("Selecciona la caccion: "))
-            founded = False
+            founded = None
             for songs in names["songs"]:
                 if(songs["name"] == name):
                     founded=True
@@ -35,10 +37,11 @@ def getSong ():
 
 
 def set_time_out(func, sec):
-    def func_wrapper():
+    # def func_wrapper():
         # set_interval(func, sec)
-        func()
-    t = threading.Timer(sec, func_wrapper)
+        # func()
+    # t = threading.Timer(sec, func_wrapper)
+    t = threading.Timer(sec, func)
     t.start()
     return t
 
@@ -47,24 +50,31 @@ def chance_z():
     global can_chance_z
     can_chance_z = True
 
-cancion=getSong()
-mixer.music.load(cancion)
-mixer.music.set_volume(volume)
-mixer.music.play()
+found_song=False
+while not found_song:
+    cancion=getSong()
+    if (cancion==None):
+        print("------your songs isn't founded------")
+    else:
+        mixer.music.load(cancion)
+        mixer.music.set_volume(volume)
+        mixer.music.play()
+        found_song = True
+
 while salir:
+    if reset:
+        print("")
+        print("press p by pause")
+        print("press r by unpause")
+        print("press s by stop")
+        print("press e by select another music")
+        print("press down by volume down")
+        print("press up by volume up")
+        print("press c by exit")
+        print("press z by activate the opcion")
+        print("")
+        reset=False
     if comants:
-        if reset:
-            print("")
-            print("press p by pause")
-            print("press r by unpause")
-            print("press s by stop")
-            print("press e by select another music")
-            print("press down by volume down")
-            print("press up by volume up")
-            print("press c by exit")
-            print("press z by cant exit without stop")
-            print("")
-            reset=False
         if keyboard.is_pressed('p'):
             mixer.music.pause()
         if keyboard.is_pressed('r'):
