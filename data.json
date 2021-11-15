@@ -7,5 +7,27 @@
                 "url": "./undertale/berdly.mp3"
             }
         ]
+    },
+    {
+        "volumen":"league of legend",
+        "songs": [
+            {
+                "name": "enemy",
+                "url": "./league of legend/enemy.mp3"
+            },
+            {
+                "name": "rise",
+                "url": "./league of legend/rise.mp3"
+            },
+            {
+                "name": "take over",
+                "url": "./league of legend/take over.mp3"
+            },
+            {
+                "name": "true damage",
+                "url": "./league of legend/true damage.mp3"
+            }
+        ]
     }
+    
 ]
