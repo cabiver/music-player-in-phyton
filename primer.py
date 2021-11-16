@@ -10,30 +10,38 @@ with open(dir_path+'/data.json') as f:
 
 mixer.init()
 salir = True
-volume = 0.3
+volume = 0.7
 reset = True
 comants = False
 can_chance_z = True
 
-def getSong ():       
-    print("") 
-    for names in data:
-        print(names["volumen"])
-    print("")
-    category=str(input("Selecciona la categoria:  "))
+def getSong():
     
-    for names in data:
-        if(names["volumen"]==category):
-            for songs in names["songs"]:
-                print(songs["name"])
-            name=str(input("Selecciona la caccion: "))
-            founded = None
-            for songs in names["songs"]:
-                if(songs["name"] == name):
-                    founded=True
-                    cancion = songs["url"]
-                    return cancion
-            return founded
+    os.system("cls")
+    found_song=False
+    while not found_song:
+        print("") 
+        for names in data:
+            print(names["volumen"])
+        print("")
+        category=str(input("Selecciona la categoria:  "))
+        
+        for names in data:
+            if(names["volumen"]==category):
+                founded = False
+                while not founded:
+                    for songs in names["songs"]:
+                        print(songs["name"])
+                    name=str(input("Selecciona la caccion: "))
+                    for songs in names["songs"]:
+                        if(songs["name"] == name):
+                            founded=True
+                            cancion = songs["url"]
+                            return cancion
+                    if not founded:
+                        print("------your songs isn't founded------")
+        if not found_song: 
+            print("------your songs isn't founded------")
 
 
 def set_time_out(func, sec):
@@ -46,23 +54,21 @@ def set_time_out(func, sec):
     return t
 
 def chance_z(): 
-    print("entre")
     global can_chance_z
     can_chance_z = True
 
-found_song=False
-while not found_song:
-    cancion=getSong()
-    if (cancion==None):
-        print("------your songs isn't founded------")
-    else:
-        mixer.music.load(cancion)
-        mixer.music.set_volume(volume)
-        mixer.music.play()
-        found_song = True
+
+cancion=getSong()
+
+mixer.music.load(cancion)
+mixer.music.set_volume(volume)
+mixer.music.play()
+found_song = True
 
 while salir:
     if reset:
+        
+        os.system("cls")
         print("")
         print("press p by pause")
         print("press r by unpause")
@@ -71,7 +77,8 @@ while salir:
         print("press down by volume down")
         print("press up by volume up")
         print("press c by exit")
-        print("press z by activate the opcion")
+        print(" ")
+        print("--press z by activate the opcion--")
         print("")
         reset=False
     if comants:
@@ -82,8 +89,10 @@ while salir:
         if keyboard.is_pressed('s'):
             mixer.music.stop()
         if keyboard.is_pressed('e'):
+            reset=True
             mixer.music.stop()
             cancion=getSong()
+            comants=False
             mixer.music.load(cancion)
             mixer.music.set_volume(volume)
             mixer.music.play()
@@ -103,7 +112,7 @@ while salir:
     if (keyboard.is_pressed('z') and can_chance_z):
         comants = not comants
         can_chance_z=False
-        identidy=set_time_out(chance_z, 3)
-        print(comants)
+        print("opction actived is change")
+        identidy=set_time_out(chance_z, 1)
 identidy.cancel()
 print("adios")
