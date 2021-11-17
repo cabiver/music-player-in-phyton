@@ -1,9 +1,7 @@
 @echo off 
-if [%1]==[] ( 
-set OPTION=aleatorio
+if [%1]==[] (     
+python "%~dp0main.py"
 ) else ( 
 set OPTION=%1
+echo|set /p=%1|python "%~dp0selec.py"
 )
-@REM python "%~dp0main.py"
-echo|set /p=%OPTION%|python "%~dp0main.py"
-@REM echo %OPTION%|python "%~dp0main.py"

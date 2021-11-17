@@ -1,15 +1,12 @@
 from pygame import mixer
 import keyboard
 import os 
-import sys
 import json
 import threading
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 with open(dir_path+'/data.json') as f:
   data = json.load(f)
-opcion=sys.stdin.read()
-
 mixer.init()
 
 volume = 0.7
@@ -26,7 +23,7 @@ def getSong():
         while not found_song:
             print("") 
             for names in data:
-                print(names["volumen"])
+                print(names["volumen"]) 
             print("")
             category=str(input("Selecciona la categoria:  "))
             
@@ -63,12 +60,7 @@ def chance_z():
     global can_chance_z
     can_chance_z = True
 
-print(opcion)
-if(opcion=="aleatorio"):
-    cancion=getSong()
-else:
-    print("hola pe")
-
+cancion=getSong()
 print(cancion)
 if (cancion != None):
     mixer.music.load( str(dir_path+cancion))
@@ -126,7 +118,7 @@ while salir:
     if (keyboard.is_pressed('z') and can_chance_z):
         comants = not comants
         can_chance_z=False
-        print("opction actived is change")
+        print(f"opction actived is change {comants}")
         identidy=set_time_out(chance_z, 1)
-# identidy.cancel()
+identidy.cancel()
 print("BYE")
