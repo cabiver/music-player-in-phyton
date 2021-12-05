@@ -1,8 +1,12 @@
+import sys
 from pygame import mixer
 import keyboard
 import os 
 import json
 import threading
+
+opcion=sys.stdin.read()
+
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 with open(dir_path+'/data.json') as f:
@@ -14,15 +18,7 @@ volume = 0.7
 reset = True
 comants = False
 can_chance_z = True
-can_enter = True
 founded = True
-
-def chance_z(): 
-    global can_chance_z
-    can_chance_z = True
-def chance_enter():
-    global can_enter
-    can_enter = True
 
 def press(event):
     global index
@@ -34,7 +30,31 @@ def press(event):
         index+=1
         founded = True
 keyboard.on_press(press)
-
+def getSong():    
+    global founded
+    os.system("cls")
+    found_song=False
+    global index
+    index=0
+    while not found_song:
+        print("") 
+        for names in data:
+            print(names["volumen"]) 
+        print("")
+        for names in data:
+            founded = True
+            if(names["volumen"]==opcion):
+                while True:
+                    if(founded):      
+                        os.system("cls")
+                        for i, songs in enumerate(names["songs"]):
+                            if(i==index):
+                                print(f"> {songs['name']}")
+                            else:
+                                print(f"- {songs['name']}")
+                        founded=False
+                    if keyboard.is_pressed("enter"):
+                        return names["songs"][index]["url"]
 
 def set_time_out(func, sec):
     # def func_wrapper():
@@ -45,51 +65,9 @@ def set_time_out(func, sec):
     t.start()
     return t
 
-def getSong():
-        
-    global founded
-    global can_enter
-    founded=True
-    os.system("cls")
-    found_song=False
-    global index
-    index=0
-    select_volumen = True
-    while not found_song:
-        # print(data[2])
-        while select_volumen:
-            if(founded):
-                os.system("cls")      
-                for i, names in enumerate(data):
-                    # print(names)
-                    if(i==index):
-                        print(f"> {names['volumen']}")
-                    else:
-                        print(f"- {names['volumen']}")
-                    founded=False
-            if keyboard.is_pressed("enter") and can_enter:
-                # print(data[index])
-                can_enter = False
-                set_time_out(chance_enter, 1)
-                opcion = data[index]
-                select_volumen = False
-        print("")
-        founded = True
-        index=0
-        while True:
-            if(founded):      
-                os.system("cls")
-                # print(opcion)
-                for i, songs in enumerate(opcion["songs"]):
-                    if(i==index):
-                        print(f"> {songs['name']}")
-                    else:
-                        print(f"- {songs['name']}")
-                founded=False
-            if keyboard.is_pressed("enter"):
-                return opcion["songs"][index]["url"]
-
-
+def chance_z(): 
+    global can_chance_z
+    can_chance_z = True
 
 cancion=getSong()
 print(cancion)
