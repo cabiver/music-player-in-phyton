@@ -86,8 +86,10 @@ def getSong():
                     else:
                         print(f"- {songs['name']}")
                 founded=False
-            if keyboard.is_pressed("enter"):
-                return opcion["songs"][index]["url"]
+            # print(can_enter)
+            if keyboard.is_pressed("enter")  and can_enter:
+                return f"./songs/{opcion['songs'][index]['url']}"
+                 
 
 
 

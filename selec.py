@@ -54,7 +54,7 @@ def getSong():
                                 print(f"- {songs['name']}")
                         founded=False
                     if keyboard.is_pressed("enter"):
-                        return names["songs"][index]["url"]
+                        return f"./songs/{names['songs'][index]['url']}"
 
 def set_time_out(func, sec):
     # def func_wrapper():

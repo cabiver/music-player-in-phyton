@@ -1,49 +1,69 @@
 [
     {
-        "volumen":"undertale",
+        "volumen": "league of legend", 
         "songs": [
             {
-                "name": "berly",
-                "url": "./undertale/berdly.mp3"
+               "name": "enemy.mp3", 
+               "url": "league of legend/enemy.mp3" 
             },
             {
-                "name": "big shot",
-                "url": "./undertale/BIG SHOT.mp3"
+               "name": "get jinxed.mp3", 
+               "url": "league of legend/get jinxed.mp3" 
+            },
+            {
+               "name": "Playground.mp3", 
+               "url": "league of legend/Playground.mp3" 
+            },
+            {
+               "name": "rise.mp3", 
+               "url": "league of legend/rise.mp3" 
+            },
+            {
+               "name": "Snakes.mp3", 
+               "url": "league of legend/Snakes.mp3" 
+            },
+            {
+               "name": "take over.mp3", 
+               "url": "league of legend/take over.mp3" 
+            },
+            {
+               "name": "true damage.mp3", 
+               "url": "league of legend/true damage.mp3" 
             }
         ]
     },
     {
-        "volumen":"league of legend",
+        "volumen": "undertale", 
         "songs": [
             {
-                "name": "enemy",
-                "url": "./league of legend/enemy.mp3"
+               "name": "berdly.mp3", 
+               "url": "undertale/berdly.mp3" 
             },
             {
-                "name": "rise",
-                "url": "./league of legend/rise.mp3"
+               "name": "BIG SHOT.mp3", 
+               "url": "undertale/BIG SHOT.mp3" 
+            }
+        ]
+    },
+    {
+        "volumen": "yoasobi", 
+        "songs": [
+            {
+               "name": "blue.mp3", 
+               "url": "yoasobi/blue.mp3" 
             },
             {
-                "name": "take over",
-                "url": "./league of legend/take over.mp3"
+               "name": "Harujion.mp3", 
+               "url": "yoasobi/Harujion.mp3" 
             },
             {
-                "name": "true damage",
-                "url": "./league of legend/true damage.mp3"
+               "name": "rabureta.mp3", 
+               "url": "yoasobi/rabureta.mp3" 
             },
             {
-                "name": "get jinxed",
-                "url": "./league of legend/get jinxed.mp3"
-            },
-            {
-                "name": "Playground",
-                "url": "./league of legend/Playground.mp3"
-            },
-            {
-                "name": "Snakes",
-                "url": "./league of legend/Snakes.mp3"
+               "name": "yoru ni.mp3", 
+               "url": "yoasobi/yoru ni.mp3" 
             }
         ]
     }
-
 ]
