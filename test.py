@@ -16,16 +16,17 @@
 #     le=0
 import os
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
-dirs = os.listdir("./songs")
+dirs = os.listdir(f"{dir_path}/songs")
 # print(dirs)
 
-json = open("data.json", "w")
+json = open(f"{dir_path}/data.json", "w")
 
 json.write("")
 json.close()
 
-f = open("data.json", "a")
+f = open(f"{dir_path}/data.json", "a")
 f.write("[\n")
 for index, data in enumerate(dirs):
     
@@ -33,7 +34,7 @@ for index, data in enumerate(dirs):
     # print(data)
     f.write("    {\n")
     f.write(f'        "volumen": "{data}", \n')
-    dirsSongs = os.listdir(f"./songs/{data}")
+    dirsSongs = os.listdir(f"{dir_path}/songs/{data}")
     f.write(f'        "songs": [\n')
     # print(dirsSongs)
     for i, songData in enumerate(dirsSongs):
